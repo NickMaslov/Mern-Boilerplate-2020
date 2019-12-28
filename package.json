@@ -1,0 +1,18 @@
+{
+  "name": "mernboilerplate2020",
+  "version": "1.0.0",
+  "description": "Skeleton application developed with MERN stack and bootstrap ui",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "boilerplate",
+    "mongodb",
+    "react",
+    "express",
+    "bootstrap"
+  ],
+  "author": "Nick Maslov <nickmmaslov@gmail.com>",
+  "license": "ISC"
+}
