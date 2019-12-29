@@ -4,7 +4,8 @@
   "description": "Skeleton application developed with MERN stack and bootstrap ui",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "server": "nodemon app.js"
   },
   "keywords": [
     "boilerplate",
@@ -14,5 +15,15 @@
     "bootstrap"
   ],
   "author": "Nick Maslov <nickmmaslov@gmail.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "config": "^3.2.4",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.8.3"
+  },
+  "devDependencies": {
+    "concurrently": "^5.0.2"
+  }
 }
