@@ -6,7 +6,7 @@ const _ = require("lodash");
 const User = require("../models/User");
 
 // post /api/users - create user
-const createValidator = [
+const createUserValidator = [
   check("username", "Minimum username length is 3 characters.").isLength({
     min: 3
   }),
@@ -86,8 +86,26 @@ const read = (req, res) => {
 };
 
 // update /api/users/:id - update user
+const updateUserValidator = [
+  check("username", "Minimum username length is 3 characters.").isLength({
+    min: 3
+  }),
+  check("email", "Email is not correct.").isEmail(),
+  check("password", "Minimum password length is 6 characters.").isLength({
+    min: 6
+  })
+];
 const update = async (req, res) => {
   try {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return res.status(400).json({
+        errors: errors.array(),
+        message: "Registration data is not correct."
+      });
+    }
+
     let user = req.profile;
     user = _.extend(user, req.body);
     await user.save();
@@ -112,7 +130,7 @@ const remove = async (req, res, next) => {
 
 module.exports = {
   create,
-  createValidator,
+  createUserValidator,
   list,
   userByID,
   read,

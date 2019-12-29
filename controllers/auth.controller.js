@@ -5,7 +5,7 @@ const bcrypt = require("bcryptjs");
 const User = require("../models/User");
 
 // post /api/auth/signin - signin user
-const signinValidation = [
+const signinValidator = [
   check("email", "Enter correct email")
     .normalizeEmail()
     .isEmail(),
@@ -58,4 +58,26 @@ const logout = (req, res) => {
   });
 };
 
-module.exports = { signin, signinValidation, logout };
+const hasAuthorization = (req, res, next) => {
+  if (req.method === "OPTIONS") {
+    return next();
+  }
+
+  try {
+    // "Bearer TOKEN"
+    const token = req.headers.authorization.split(" ")[1];
+
+    if (!token) {
+      return res.status(401).json({ message: "No authorization." });
+    }
+
+    const decoded = jwt.verify(token, config.get("jwtSecret"));
+    req.user = decoded;
+
+    next();
+  } catch (e) {
+    res.status(401).json({ message: "No authorization." });
+  }
+};
+
+module.exports = { signin, signinValidator, logout, hasAuthorization };
