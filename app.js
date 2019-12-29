@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const config = require("config");
-const routes = require("./routes");
+const router = require("./routes");
 
 const app = express();
 
@@ -9,8 +9,9 @@ const app = express();
 app.use(express.json({ extended: true }));
 
 //  Connect all our routes to our application
-app.use("/", routes);
+app.use("/api", router);
 
+// DB and server connection
 async function start() {
   try {
     mongoose.connect(config.get("mongoURI"), {
