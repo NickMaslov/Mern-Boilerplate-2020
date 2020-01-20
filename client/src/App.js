@@ -1,11 +1,18 @@
 import React from "react";
-import "./App.css";
+import { BrowserRouter as Router } from "react-router-dom";
+import { useRoutes } from "./routes";
+import { Navbar } from "./components/Navbar";
 
 function App() {
+  const isAuthenticated = false;
+
+  const routes = useRoutes(isAuthenticated);
+
   return (
-    <div className="App">
-      <header className="App-header"></header>
-    </div>
+    <Router>
+      {isAuthenticated && <Navbar />}
+      <div>{routes}</div>
+    </Router>
   );
 }
 
