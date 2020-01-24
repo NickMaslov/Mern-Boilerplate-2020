@@ -4,8 +4,8 @@
   "description": "Skeleton application developed with MERN stack and bootstrap ui",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "server": "nodemon app.js",
+    "start": "node server/app.js",
+    "server": "nodemon server/app.js",
     "client": "npm run start --prefix client",
     "client:install": "npm install --prefix client",
     "client:build": "npm run build --prefix client",
@@ -23,6 +23,7 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "config": "^3.2.4",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-validator": "^6.3.0",
     "jsonwebtoken": "^8.5.1",
