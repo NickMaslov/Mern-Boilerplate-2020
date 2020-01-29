@@ -9,7 +9,8 @@ const signinValidator = [
   check("email", "Enter correct email")
     .normalizeEmail()
     .isEmail(),
-  check("password", "Enter password").exists()
+  check("password", "Enter password").notEmpty()
+  // .isLength(6)
 ];
 const signin = async (req, res) => {
   try {
@@ -18,7 +19,7 @@ const signin = async (req, res) => {
     if (!errors.isEmpty()) {
       return res.status(400).json({
         errors: errors.array(),
-        message: "Login data is not correct."
+        message: "Login data is not correct"
       });
     }
 
@@ -49,10 +50,10 @@ const signin = async (req, res) => {
 };
 
 // post /api/auth/logout - signout user
+// logging out on front side for now
 const logout = (req, res) => {
-  //cleaning token on front side
-  // res.clearCookie();
-  // res.localStorage.clear();
+  res.clearCookie();
+  res.localStorage.clear();
   return res.status("200").json({
     message: "Logged out."
   });

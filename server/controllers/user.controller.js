@@ -6,6 +6,9 @@ const User = require("../models/User");
 
 // post /api/users - create user
 const createUserValidator = [
+  check("username", "Minimum username length is 3 characters.").isLength({
+    min: 6
+  }),
   check("email", "Email is not correct.").isEmail(),
   check("password", "Minimum password length is 6 characters.").isLength({
     min: 6
@@ -86,10 +89,7 @@ const updateUserValidator = [
   check("username", "Minimum username length is 3 characters.").isLength({
     min: 3
   }),
-  check("email", "Email is not correct.").isEmail(),
-  check("password", "Minimum password length is 6 characters.").isLength({
-    min: 6
-  })
+  check("email", "Email is not correct.").isEmail()
 ];
 const update = async (req, res) => {
   try {
@@ -102,6 +102,15 @@ const update = async (req, res) => {
       });
     }
 
+    if (req.body.password) {
+      if (req.body.password.length < 6) {
+        res
+          .status(400)
+          .json({ message: "Minimum password length is 6 charachters" });
+      }
+      const hasedPassword = await bcrypt.hash(req.body.password, 12);
+      req.body.password = hasedPassword;
+    }
     let user = req.profile;
     user = _.extend(user, req.body);
     await user.save();
@@ -131,5 +140,6 @@ module.exports = {
   userByID,
   read,
   update,
+  updateUserValidator,
   remove
 };

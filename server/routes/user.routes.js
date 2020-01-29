@@ -12,7 +12,7 @@ router
 router
   .route("/:userId")
   .get(userCtrl.read)
-  .put(authCtrl.hasAuthorization, userCtrl.update)
+  .put(authCtrl.hasAuthorization, userCtrl.updateUserValidator, userCtrl.update)
   .delete(authCtrl.hasAuthorization, userCtrl.remove);
 
 router.param("userId", userCtrl.userByID);

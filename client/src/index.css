@@ -1,20 +1,61 @@
 @import "~materialize-css/dist/css/materialize.min.css";
 
+/**
+AuthPage
+NavBar
+Home
+Users
+Profile
+**/
 
-input.yellow-input {
-    border-bottom: 1px solid #fff !important;
-    box-shadow: 0 1px 0 0 #fff!important;
+
+/* AuthPage */
+
+.text-shadow {
+  box-sizing: content-box;
+  border: none;
+  font: normal 75px / normal "Arizonia", Helvetica, sans-serif;
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
+  text-overflow: clip;
+  text-shadow: 0 15px 29px rgba(0, 0, 0, 0.0980392),
+    10px 20px 5px rgba(0, 0, 0, 0.0470588),
+    -10px 20px 5px rgba(0, 0, 0, 0.0470588);
+  transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
 }
 
-input.yellow-input + label {
-    color: #ffffff !important;
+.text-shadow:hover {
+  text-shadow: 0 -15px 29px rgba(0, 0, 0, 0.0980392),
+    10px -20px 5px rgba(0, 0, 0, 0.0470588),
+    -10px -20px 5px rgba(0, 0, 0, 0.0470588);
 }
 
-input.yellow-input:focus {
-    border-bottom: 1px solid #ffeb3b !important;
-    box-shadow: 0 1px 0 0 #ffeb3b!important;
+.input-field input:focus
+{
+    border-bottom: 1px solid #ffcdd2 !important;
+    box-shadow: 0 1px 0 0 #ffcdd2 !important;
 }
 
-input.yellow-input:focus + label {
-    color: #ffeb3b !important;
+/* NavBar */
+
+/*  */
+
+
+/* Home */
+.material-icons {
+  font-size: inherit;
+}
+
+
+/* Profile */
+
+.profile-info {
+  color: black !important;
+}
+
+button.btn-profile{
+  width: 40%;
+  margin: 5%;
+  position: relative;
+  top: 0
 }

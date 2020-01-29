@@ -1,33 +1,27 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 
-// import { LinksPage } from "./pages/LinksPage";
-// import { CreatePage } from "./pages/CreatePage";
-// import { DetailPage } from "./pages/DetailPage";
-import { AuthPage } from "./pages/AuthPage";
-
-// import { Signin } from "./components/auth/Signin";
-// import { Signup } from "./components/auth/Signup";
-import { Home } from "./components/Home";
-// import { Profile } from "./components/Profile";
-// import { Users } from "./components/Users";
-// import { EditProfile } from "./components/EditProfile";
+import { AuthPage } from "./components/AuthPage/AuthPage";
+import { HomePage } from "./components/HomePage/HomePage";
+import { ProfilePage } from "./components/ProfilePage/ProfilePage";
+import { UsersPage } from "./components/UsersPage/UsersPage";
+import { EditProfilePage } from "./components/EditProfilePage/EditProfilePage";
 
 export const useRoutes = isAuthentificated => {
   if (isAuthentificated) {
     return (
       <Switch>
         <Route path="/home" exact>
-          <Home />
-          {/* </Route>
+          <HomePage />
+        </Route>
         <Route path="/users" exact>
-          <Users />
+          <UsersPage />
         </Route>
-        <Route path="/user/:userId" exact>
-          <Profile />
+        <Route path="/profile" exact>
+          <ProfilePage />
         </Route>
-        <Route path="/user/edit/:userId" exact>
-          <EditProfile /> */}
+        <Route path="/profile/edit" exact>
+          <EditProfilePage />
         </Route>
         <Redirect to="/home" />
       </Switch>
